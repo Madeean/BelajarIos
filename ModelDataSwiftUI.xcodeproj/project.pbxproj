@@ -11,6 +11,8 @@
 		806C70792B25AF1C00B840F8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806C70782B25AF1C00B840F8 /* ContentView.swift */; };
 		806C707B2B25AF1D00B840F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 806C707A2B25AF1D00B840F8 /* Assets.xcassets */; };
 		806C707E2B25AF1D00B840F8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 806C707D2B25AF1D00B840F8 /* Preview Assets.xcassets */; };
+		806C70852B25CC2900B840F8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806C70842B25CC2900B840F8 /* DataModel.swift */; };
+		806C70872B25CCA100B840F8 /* GlobalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806C70862B25CCA100B840F8 /* GlobalObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		806C70782B25AF1C00B840F8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		806C707A2B25AF1D00B840F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		806C707D2B25AF1D00B840F8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		806C70842B25CC2900B840F8 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		806C70862B25CCA100B840F8 /* GlobalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 				806C70782B25AF1C00B840F8 /* ContentView.swift */,
 				806C707A2B25AF1D00B840F8 /* Assets.xcassets */,
 				806C707C2B25AF1D00B840F8 /* Preview Content */,
+				806C70842B25CC2900B840F8 /* DataModel.swift */,
+				806C70862B25CCA100B840F8 /* GlobalObject.swift */,
 			);
 			path = ModelDataSwiftUI;
 			sourceTree = "<group>";
@@ -138,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				806C70792B25AF1C00B840F8 /* ContentView.swift in Sources */,
+				806C70872B25CCA100B840F8 /* GlobalObject.swift in Sources */,
 				806C70772B25AF1C00B840F8 /* ModelDataSwiftUIApp.swift in Sources */,
+				806C70852B25CC2900B840F8 /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

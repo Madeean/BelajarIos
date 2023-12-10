@@ -7,66 +7,64 @@
 
 import SwiftUI
 
-struct ProductModel: Identifiable {
-    let id: Int
-    let namaProduct: String
-    let fotoProduct: String
-    let hargaProduct: Int
-    let lokasi: String
-    let ratingCount: Double
-    let jumlahRating: Int
 
-    init(id: Int, namaProduct: String, fotoProduct: String, hargaProduct: Int, lokasi: String, ratingCount: Double, jumlahRating: Int) {
-        self.id = id
-        self.fotoProduct = fotoProduct
-        self.namaProduct = namaProduct
-        self.hargaProduct = hargaProduct
-        self.lokasi = lokasi
-        self.ratingCount = ratingCount
-        self.jumlahRating = jumlahRating
-    }
-}
 
 struct ContentView: View {
-    let data: [ProductModel] = [
-        ProductModel(id: 1, namaProduct: "Sepeda Polygon", fotoProduct: "foto1", hargaProduct: 5000, lokasi: "tangerang", ratingCount: 5.0, jumlahRating: 5),
-        ProductModel(id: 2, namaProduct: "sepeda fixie", fotoProduct: "foto2", hargaProduct: 10000, lokasi: "bogor", ratingCount: 3.2, jumlahRating: 3),
-        ProductModel(id: 1, namaProduct: "Sepeda Polygon", fotoProduct: "foto3", hargaProduct: 5000, lokasi: "tangerang", ratingCount: 5.0, jumlahRating: 5),
-        ProductModel(id: 2, namaProduct: "sepeda fixie", fotoProduct: "foto4", hargaProduct: 10000, lokasi: "bogor", ratingCount: 3.2, jumlahRating: 3),
-        ProductModel(id: 1, namaProduct: "Sepeda Polygon", fotoProduct: "foto5", hargaProduct: 5000, lokasi: "tangerang", ratingCount: 5.0, jumlahRating: 5),
-        ProductModel(id: 2, namaProduct: "sepeda fixie", fotoProduct: "foto6", hargaProduct: 10000, lokasi: "bogor", ratingCount: 3.2, jumlahRating: 3),
-        ProductModel(id: 1, namaProduct: "Sepeda Polygon", fotoProduct: "foto7", hargaProduct: 5000, lokasi: "tangerang", ratingCount: 5.0, jumlahRating: 5),
-        ProductModel(id: 2, namaProduct: "sepeda fixie", fotoProduct: "foto8", hargaProduct: 10000, lokasi: "bogor", ratingCount: 3.2, jumlahRating: 3),
-        ProductModel(id: 1, namaProduct: "Sepeda Polygon", fotoProduct: "foto9", hargaProduct: 5000, lokasi: "tangerang", ratingCount: 5.0, jumlahRating: 5),
-        ProductModel(id: 2, namaProduct: "sepeda fixie", fotoProduct: "foto10", hargaProduct: 10000, lokasi: "bogor", ratingCount: 3.2, jumlahRating: 3),
+    let data: [DataModel] = [
+        DataModel(id: 1, namaProduct: "Sepeda Polygon", fotoProduct: "foto1", hargaProduct: 5000, lokasi: "tangerang", ratingCount: 5.0, jumlahRating: 5),
+        DataModel(id: 2, namaProduct: "sepeda fixie", fotoProduct: "foto2", hargaProduct: 10000, lokasi: "bogor", ratingCount: 3.2, jumlahRating: 3),
+        DataModel(id: 1, namaProduct: "Sepeda Polygon", fotoProduct: "foto3", hargaProduct: 5000, lokasi: "tangerang", ratingCount: 5.0, jumlahRating: 5),
+        DataModel(id: 2, namaProduct: "sepeda fixie", fotoProduct: "foto4", hargaProduct: 10000, lokasi: "bogor", ratingCount: 3.2, jumlahRating: 3),
+        DataModel(id: 1, namaProduct: "Sepeda Polygon", fotoProduct: "foto5", hargaProduct: 5000, lokasi: "tangerang", ratingCount: 5.0, jumlahRating: 5),
+        DataModel(id: 2, namaProduct: "sepeda fixie", fotoProduct: "foto6", hargaProduct: 10000, lokasi: "bogor", ratingCount: 3.2, jumlahRating: 3),
+        DataModel(id: 1, namaProduct: "Sepeda Polygon", fotoProduct: "foto7", hargaProduct: 5000, lokasi: "tangerang", ratingCount: 5.0, jumlahRating: 5),
+        DataModel(id: 2, namaProduct: "sepeda fixie", fotoProduct: "foto8", hargaProduct: 10000, lokasi: "bogor", ratingCount: 3.2, jumlahRating: 3),
+        DataModel(id: 1, namaProduct: "Sepeda Polygon", fotoProduct: "foto9", hargaProduct: 5000, lokasi: "tangerang", ratingCount: 5.0, jumlahRating: 5),
+        DataModel(id: 2, namaProduct: "sepeda fixie", fotoProduct: "foto10", hargaProduct: 10000, lokasi: "bogor", ratingCount: 3.2, jumlahRating: 3),
     ]
+
+    @State var jumlahKeranjang: Int = 0
 
     var body: some View {
 //        Product(data: data)
-        NavigationView{
-            ScrollView{
-                ForEach(data){ row in
-                    VStack(spacing:10){
-                        Product(data: row)
+        NavigationView {
+            ScrollView {
+                ForEach(data) { row in
+                    VStack(spacing: 10) {
+                        Product(data: row, jumlahProduk: $jumlahKeranjang)
                     }
                 }
             }
             .navigationBarTitle("Sepeda MTB", displayMode: .automatic)
             .navigationViewStyle(StackNavigationViewStyle())
-            .navigationBarItems(trailing: HStack{
+            .navigationBarItems(trailing: HStack {
                 Button(action: {
                     print("helo")
                 }, label: {
                     Image(systemName: "person.fill")
                 })
-                Button(action: {
-                    print("helo")
-                }, label: {
-                    Image(systemName: "cart.fill")
-                })
+                
+                keranjangView(jumlah: $jumlahKeranjang)
+
             }).accentColor(.secondary)
         }
-        
+    }
+}
+
+struct keranjangView: View {
+    
+    @Binding var jumlah:Int
+    
+    var body: some View {
+        ZStack {
+            Button(action: {
+                print("helo")
+            }, label: {
+                Image(systemName: "cart.fill")
+            })
+
+            Text("\(jumlah)").foregroundColor(.white).font(.body).padding(5).background(.red).clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/).offset(x: 10, y: -10)
+        }
     }
 }
 
@@ -75,7 +73,9 @@ struct ContentView: View {
 }
 
 struct Product: View {
-    let data: ProductModel
+    let data: DataModel
+    
+    @Binding var jumlahProduk:Int
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -100,25 +100,34 @@ struct Product: View {
 
             HStack {
                 HStack {
-                    ForEach(0 ..< data.jumlahRating, id: \.self) { items in
+                    ForEach(0 ..< data.jumlahRating, id: \.self) { _ in
                         Image(systemName: "star.fill").foregroundColor(.yellow)
                     }
                 }
             }.padding(.horizontal).padding(.top, 4)
 
-            Button(action: {
-                print("keranjang")
-            }, label: {
-                HStack {
-                    Spacer()
-                    HStack {
-                        Image(systemName: "cart")
-                        Text("Tambah Ke Keranjang").font(.callout).padding()
-                    }
-                    Spacer()
-                }
-            }).background(.green).foregroundColor(.white).cornerRadius(10).padding()
+            TambahkeranjangView(jumlah: $jumlahProduk)
 
         }.background(Color.warna).cornerRadius(15)
+    }
+}
+
+struct TambahkeranjangView:View {
+    
+    @Binding var jumlah:Int
+    
+    var body: some View {
+        Button(action: {
+            jumlah += 1
+        }, label: {
+            HStack {
+                Spacer()
+                HStack {
+                    Image(systemName: "cart")
+                    Text("Tambah Ke Keranjang").font(.callout).padding()
+                }
+                Spacer()
+            }
+        }).background(.green).foregroundColor(.white).cornerRadius(10).padding()
     }
 }
