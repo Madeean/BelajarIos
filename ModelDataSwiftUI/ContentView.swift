@@ -23,7 +23,9 @@ struct ContentView: View {
         DataModel(id: 2, namaProduct: "sepeda fixie", fotoProduct: "foto10", hargaProduct: 10000, lokasi: "bogor", ratingCount: 3.2, jumlahRating: 3),
     ]
 
-    @State var jumlahKeranjang: Int = 0
+//    @State var jumlahKeranjang: Int = 0
+    @ObservedObject var globalData =  GlobalObject()
+
 
     var body: some View {
 //        Product(data: data)
@@ -31,7 +33,7 @@ struct ContentView: View {
             ScrollView {
                 ForEach(data) { row in
                     VStack(spacing: 10) {
-                        Product(data: row, jumlahProduk: $jumlahKeranjang)
+                        Product(data: row, jumlahKeranjang: globalData)
                     }
                 }
             }
@@ -44,26 +46,49 @@ struct ContentView: View {
                     Image(systemName: "person.fill")
                 })
                 
-                keranjangView(jumlah: $jumlahKeranjang)
+                NavigationLink(destination: DetailView(globalData: globalData)){
+                    keranjangView(jumlahKeranjang: globalData)
+                }
 
             }).accentColor(.secondary)
         }
     }
 }
 
+
+struct DetailView: View {
+    @ObservedObject var globalData: GlobalObject
+
+    var body: some View {
+            NavigationView{
+            Text("Detail").navigationBarTitle("Detail").navigationBarItems(trailing: HStack {
+                Button(action: {
+                    print("helo")
+                }, label: {
+                    Image(systemName: "person.fill")
+                })
+                
+                keranjangView(jumlahKeranjang: globalData)
+
+            }).accentColor(.secondary)
+        }
+    }
+}
+
+
 struct keranjangView: View {
     
-    @Binding var jumlah:Int
+//    @Binding var jumlah:Int
+    @ObservedObject var jumlahKeranjang: GlobalObject
+
     
     var body: some View {
         ZStack {
-            Button(action: {
-                print("helo")
-            }, label: {
-                Image(systemName: "cart.fill")
-            })
 
-            Text("\(jumlah)").foregroundColor(.white).font(.body).padding(5).background(.red).clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/).offset(x: 10, y: -10)
+                Image(systemName: "cart.fill")
+   
+
+            Text("\(jumlahKeranjang.jumlah)").foregroundColor(.white).font(.body).padding(5).background(.red).clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/).offset(x: 10, y: -10)
         }
     }
 }
@@ -75,7 +100,9 @@ struct keranjangView: View {
 struct Product: View {
     let data: DataModel
     
-    @Binding var jumlahProduk:Int
+//    @Binding var jumlahProduk:Int
+    @ObservedObject var jumlahKeranjang: GlobalObject
+
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -106,7 +133,7 @@ struct Product: View {
                 }
             }.padding(.horizontal).padding(.top, 4)
 
-            TambahkeranjangView(jumlah: $jumlahProduk)
+            TambahkeranjangView(keranjang: jumlahKeranjang)
 
         }.background(Color.warna).cornerRadius(15)
     }
@@ -114,11 +141,13 @@ struct Product: View {
 
 struct TambahkeranjangView:View {
     
-    @Binding var jumlah:Int
+//    @Binding var jumlah:Int
+    
+    @ObservedObject var keranjang: GlobalObject
     
     var body: some View {
         Button(action: {
-            jumlah += 1
+            keranjang.jumlah += 1
         }, label: {
             HStack {
                 Spacer()
