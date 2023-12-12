@@ -8,14 +8,138 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var userAuth: AuthUser
+
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        if !userAuth.isLoggedIn{
+            return AnyView( LoginView())
+        }else{
+            return AnyView( HomeView())
         }
-        .padding()
+    }
+}
+
+struct HomeView:View {
+    @EnvironmentObject var userAuth: AuthUser
+
+    var body: some View {
+        NavigationView{
+            ZStack{
+                Color.purple
+                Text("home").foregroundColor(.white)
+                    .navigationBarTitle("Home", displayMode: .inline)
+                    .navigationBarItems(trailing: Button(action: {
+                        userAuth.isLoggedIn = false
+                    }, label: {
+                        Image(systemName: "arrowshape.turn.up.right.circle")
+                    }))
+            }
+        }
+    }
+}
+
+struct LoginView: View {
+    
+    @EnvironmentObject var userAuth: AuthUser
+    
+    @State var username: String = ""
+    @State var password: String = ""
+
+    let lightGreyColor = Color(red: 239.0 / 255.0, green: 243.0 / 255.0, blue: 244.0 / 255.0, opacity: 1.0)
+    
+    func cekLogin(){
+        if(username == "Admin" && password == "123"){
+            userAuth.isLoggedIn = true
+            userAuth.isCorrect = true
+            print("masuk")
+        }else{
+            userAuth.isLoggedIn = false
+            userAuth.isCorrect = false
+        }
+    }
+
+    var body: some View {
+        ZStack {
+            Color.white.edgesIgnoringSafeArea(.all)
+
+            VStack {
+                HStack {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Hi!").bold().font(.largeTitle).foregroundStyle(.white)
+                            Text("Welcome Back").bold().font(.title).foregroundStyle(.white)
+                        }
+
+                        Spacer()
+
+                        Image("bitmap").resizable().frame(width: 120, height: 80).padding()
+                    }
+
+                    Spacer()
+
+                }.frame(height: 180).padding(30).background(.purple).clipShape(CustomShape(corner: .bottomRight, radii: 100)).edgesIgnoringSafeArea(.top)
+
+                VStack(alignment: .leading) {
+                    Text("username")
+                    TextField("username...", text: $username).padding().background(lightGreyColor).cornerRadius(5)
+
+                    Text("password")
+                    SecureField("password...", text: $password).padding().background(lightGreyColor).cornerRadius(5)
+                    
+                    
+//                    error view
+                    if !userAuth.isCorrect {
+                        Text("username and passowrd salah").foregroundColor(.red)
+                    }
+
+                    HStack {
+                        Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                            Text("forgot password?")
+                        })
+                        Spacer()
+                    }.padding(.vertical, 10)
+
+                    HStack {
+                        Spacer()
+                            Text("sign in").bold().font(.callout).foregroundStyle(.white)
+                        Spacer()
+                    }.padding().background(.purple).cornerRadius(15).onTapGesture {
+                        cekLogin()
+                    }
+
+                    HStack {
+                        Spacer()
+                        Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                            Text("our privacy police").bold().font(.callout).foregroundStyle(.purple)
+                        })
+                        Spacer()
+                    }.padding()
+
+                    HStack {
+                        Text("dont have an account?")
+                        Spacer()
+                        Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                            Text("sign up").bold().font(.callout).foregroundStyle(.purple)
+                        })
+                    }.padding()
+
+                }.padding(30)
+
+                Spacer()
+            }
+        }
+    }
+}
+
+struct CustomShape: Shape {
+    var corner: UIRectCorner
+    var radii: CGFloat
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corner, cornerRadii: CGSize(width: radii, height: radii))
+
+        return Path(path.cgPath)
     }
 }
 
