@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		809D2B612B2AA707006A9156 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809D2B602B2AA707006A9156 /* AppDelegate.swift */; };
+		809D2B632B2AA72C006A9156 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809D2B622B2AA72C006A9156 /* SceneDelegate.swift */; };
 		80FE9E082B29F04200A145DE /* TapedAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE9E072B29F04200A145DE /* TapedAppApp.swift */; };
 		80FE9E0A2B29F04200A145DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE9E092B29F04200A145DE /* ContentView.swift */; };
 		80FE9E0C2B29F04300A145DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80FE9E0B2B29F04300A145DE /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		809D2B602B2AA707006A9156 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		809D2B622B2AA72C006A9156 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		80FE9E042B29F04200A145DE /* TapedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80FE9E072B29F04200A145DE /* TapedAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapedAppApp.swift; sourceTree = "<group>"; };
 		80FE9E092B29F04200A145DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		80FE9E062B29F04200A145DE /* TapedApp */ = {
 			isa = PBXGroup;
 			children = (
+				809D2B622B2AA72C006A9156 /* SceneDelegate.swift */,
+				809D2B602B2AA707006A9156 /* AppDelegate.swift */,
 				80FE9E072B29F04200A145DE /* TapedAppApp.swift */,
 				80FE9E092B29F04200A145DE /* ContentView.swift */,
 				80FE9E0B2B29F04300A145DE /* Assets.xcassets */,
@@ -137,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				809D2B612B2AA707006A9156 /* AppDelegate.swift in Sources */,
 				80FE9E0A2B29F04200A145DE /* ContentView.swift in Sources */,
 				80FE9E082B29F04200A145DE /* TapedAppApp.swift in Sources */,
+				809D2B632B2AA72C006A9156 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
