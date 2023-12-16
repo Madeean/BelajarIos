@@ -12,6 +12,7 @@
 		804DE19C2B26019400434BDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 804DE19B2B26019400434BDD /* Assets.xcassets */; };
 		804DE19F2B26019400434BDD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 804DE19E2B26019400434BDD /* Preview Assets.xcassets */; };
 		804DE1A62B2601E500434BDD /* AuthUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804DE1A52B2601E500434BDD /* AuthUser.swift */; };
+		80586EA82B2D956B00A77E57 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80586EA72B2D956B00A77E57 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,8 @@
 		804DE19B2B26019400434BDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		804DE19E2B26019400434BDD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		804DE1A52B2601E500434BDD /* AuthUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUser.swift; sourceTree = "<group>"; };
+		80586EA72B2D956B00A77E57 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		80586EA92B2D98C300A77E57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +56,8 @@
 		804DE1962B26019300434BDD /* AppEnvironentSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				80586EA92B2D98C300A77E57 /* Info.plist */,
+				80586EA62B2D955200A77E57 /* Model */,
 				804DE1972B26019300434BDD /* AppEnvironentSwiftUIApp.swift */,
 				804DE1992B26019300434BDD /* ContentView.swift */,
 				804DE19B2B26019400434BDD /* Assets.xcassets */,
@@ -68,6 +73,14 @@
 				804DE19E2B26019400434BDD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		80586EA62B2D955200A77E57 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				80586EA72B2D956B00A77E57 /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +156,7 @@
 				804DE19A2B26019300434BDD /* ContentView.swift in Sources */,
 				804DE1A62B2601E500434BDD /* AuthUser.swift in Sources */,
 				804DE1982B26019300434BDD /* AppEnvironentSwiftUIApp.swift in Sources */,
+				80586EA82B2D956B00A77E57 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +292,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AppEnvironentSwiftUI/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppEnvironentSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -306,6 +321,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AppEnvironentSwiftUI/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppEnvironentSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

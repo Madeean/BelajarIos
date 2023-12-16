@@ -15,7 +15,7 @@ struct ContentView: View {
         if !userAuth.isLoggedIn{
             return AnyView( LoginView())
         }else{
-            return AnyView( HomeView())
+            return AnyView( HomeView().animation(.easeIn))
         }
     }
 }
@@ -27,10 +27,11 @@ struct HomeView:View {
         NavigationView{
             ZStack{
                 Color.purple
-                Text("home").foregroundColor(.white)
+                Text("Selaamt datang \(userAuth.userName)").foregroundColor(.white)
                     .navigationBarTitle("Home", displayMode: .inline)
                     .navigationBarItems(trailing: Button(action: {
                         userAuth.isLoggedIn = false
+                        userAuth.isApiReachable = true
                     }, label: {
                         Image(systemName: "arrowshape.turn.up.right.circle")
                     }))
@@ -48,16 +49,18 @@ struct LoginView: View {
 
     let lightGreyColor = Color(red: 239.0 / 255.0, green: 243.0 / 255.0, blue: 244.0 / 255.0, opacity: 1.0)
     
-    func cekLogin(){
-        if(username == "Admin" && password == "123"){
-            userAuth.isLoggedIn = true
-            userAuth.isCorrect = true
-            print("masuk")
-        }else{
-            userAuth.isLoggedIn = false
-            userAuth.isCorrect = false
-        }
-    }
+//    func cekLogin(){
+//        if(username == "Admin" && password == "123"){
+//            userAuth.isLoggedIn = true
+//            userAuth.isCorrect = true
+//            print("masuk")
+//        }else{
+//            userAuth.isLoggedIn = false
+//            userAuth.isCorrect = false
+//        }
+//    }
+    
+    @State var isEmptyField = false
 
     var body: some View {
         ZStack {
@@ -79,18 +82,35 @@ struct LoginView: View {
                     Spacer()
 
                 }.frame(height: 180).padding(30).background(.purple).clipShape(CustomShape(corner: .bottomRight, radii: 100)).edgesIgnoringSafeArea(.top)
+                
+                
+                if !self.userAuth.isApiReachable{
+                    HStack{
+                        HStack{
+                            Spacer()
+                            Image(systemName: "exclamationmark.cloud").foregroundColor(.white)
+                            Text("Situs tidak dapat dijangkau").font(.body).foregroundStyle(.white)
+                            Spacer()
+                        }.padding().background(.red).cornerRadius(20)
+                    }.padding()
+                }
+                
 
                 VStack(alignment: .leading) {
                     Text("username")
-                    TextField("username...", text: $username).padding().background(lightGreyColor).cornerRadius(5)
+                    TextField("username...", text: $username).padding().background(lightGreyColor).cornerRadius(5).autocapitalization(.none).keyboardType(.emailAddress)
 
                     Text("password")
-                    SecureField("password...", text: $password).padding().background(lightGreyColor).cornerRadius(5)
+                    SecureField("password...", text: $password).padding().background(lightGreyColor).cornerRadius(5).autocapitalization(.none)
                     
                     
 //                    error view
                     if !userAuth.isCorrect {
                         Text("username and passowrd salah").foregroundColor(.red)
+                    }
+                    
+                    if isEmptyField {
+                        Text("username and passowrd tidak boleh kosong").foregroundColor(.red)
                     }
 
                     HStack {
@@ -105,7 +125,12 @@ struct LoginView: View {
                             Text("sign in").bold().font(.callout).foregroundStyle(.white)
                         Spacer()
                     }.padding().background(.purple).cornerRadius(15).onTapGesture {
-                        cekLogin()
+                        if username.isEmpty || password.isEmpty{
+                            self.isEmptyField = true
+                        }else{
+                            self.isEmptyField = false
+                            self.userAuth.cekLogin(password: password, email: username)
+                        }
                     }
 
                     HStack {
@@ -144,5 +169,5 @@ struct CustomShape: Shape {
 }
 
 #Preview {
-    ContentView()
+    LoginView()
 }
