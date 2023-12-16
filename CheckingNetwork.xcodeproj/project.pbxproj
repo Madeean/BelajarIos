@@ -11,6 +11,7 @@
 		80BA0DBB2B2ADD680068213B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BA0DBA2B2ADD680068213B /* ContentView.swift */; };
 		80BA0DBD2B2ADD690068213B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80BA0DBC2B2ADD690068213B /* Assets.xcassets */; };
 		80BA0DC02B2ADD690068213B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80BA0DBF2B2ADD690068213B /* Preview Assets.xcassets */; };
+		80BA0DC82B2ADDBB0068213B /* UtilitySwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BA0DC72B2ADDBB0068213B /* UtilitySwift.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		80BA0DBA2B2ADD680068213B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		80BA0DBC2B2ADD690068213B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80BA0DBF2B2ADD690068213B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		80BA0DC72B2ADDBB0068213B /* UtilitySwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitySwift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		80BA0DB72B2ADD680068213B /* CheckingNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				80BA0DC62B2ADD950068213B /* Utilities */,
 				80BA0DB82B2ADD680068213B /* CheckingNetworkApp.swift */,
 				80BA0DBA2B2ADD680068213B /* ContentView.swift */,
 				80BA0DBC2B2ADD690068213B /* Assets.xcassets */,
@@ -65,6 +68,14 @@
 				80BA0DBF2B2ADD690068213B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		80BA0DC62B2ADD950068213B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				80BA0DC72B2ADDBB0068213B /* UtilitySwift.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80BA0DC82B2ADDBB0068213B /* UtilitySwift.swift in Sources */,
 				80BA0DBB2B2ADD680068213B /* ContentView.swift in Sources */,
 				80BA0DB92B2ADD680068213B /* CheckingNetworkApp.swift in Sources */,
 			);
