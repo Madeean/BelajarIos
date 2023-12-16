@@ -11,6 +11,8 @@
 		80FA52A72B2AAD8B001729DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FA52A62B2AAD8B001729DF /* ContentView.swift */; };
 		80FA52A92B2AAD8C001729DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80FA52A82B2AAD8C001729DF /* Assets.xcassets */; };
 		80FA52AC2B2AAD8C001729DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80FA52AB2B2AAD8C001729DF /* Preview Assets.xcassets */; };
+		80FA52B52B2AAE3A001729DF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FA52B42B2AAE3A001729DF /* Post.swift */; };
+		80FA52B72B2AAEB7001729DF /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FA52B62B2AAEB7001729DF /* ApiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		80FA52A62B2AAD8B001729DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		80FA52A82B2AAD8C001729DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80FA52AB2B2AAD8C001729DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		80FA52B42B2AAE3A001729DF /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		80FA52B62B2AAEB7001729DF /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 		80FA52A32B2AAD8B001729DF /* FetchApiJsonOke */ = {
 			isa = PBXGroup;
 			children = (
+				80FA52B32B2AAE1B001729DF /* service */,
+				80FA52B22B2AAE09001729DF /* model */,
 				80FA52A42B2AAD8B001729DF /* FetchApiJsonOkeApp.swift */,
 				80FA52A62B2AAD8B001729DF /* ContentView.swift */,
 				80FA52A82B2AAD8C001729DF /* Assets.xcassets */,
@@ -65,6 +71,22 @@
 				80FA52AB2B2AAD8C001729DF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		80FA52B22B2AAE09001729DF /* model */ = {
+			isa = PBXGroup;
+			children = (
+				80FA52B42B2AAE3A001729DF /* Post.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		80FA52B32B2AAE1B001729DF /* service */ = {
+			isa = PBXGroup;
+			children = (
+				80FA52B62B2AAEB7001729DF /* ApiService.swift */,
+			);
+			path = service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +159,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80FA52B52B2AAE3A001729DF /* Post.swift in Sources */,
 				80FA52A72B2AAD8B001729DF /* ContentView.swift in Sources */,
+				80FA52B72B2AAEB7001729DF /* ApiService.swift in Sources */,
 				80FA52A52B2AAD8B001729DF /* FetchApiJsonOkeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

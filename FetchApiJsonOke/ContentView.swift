@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var listData = ApiService()
+    
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        List(listData.post) { post in
+            VStack(alignment:.leading) {
+                Text(post.title).font(.system(size: 24,weight: .bold, design: .rounded))
+                Text(post.body).font(.system(size: 16,weight: .light, design: .rounded))
+            }
         }
-        .padding()
     }
 }
 
